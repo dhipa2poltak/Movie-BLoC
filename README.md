@@ -16,4 +16,4 @@
 - .
 - and many more
 
-Download it from Play Store by clicking this [link](https://play.google.com/store/apps/details?id=com.dpfht.movie_bloc/).
+Download it from Play Store by clicking this [link](https://play.google.com/store/apps/details?id=com.dpfht.movie_bloc).
