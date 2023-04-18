@@ -1,16 +1,19 @@
-# tmdb_bloc
+# Movie BLoC
 
-A new Flutter project.
+**Technology Stack:**
+- Flutter
+- Dart Programming Language
+- Clean Architecture
+- BLoC state management
+- Get It, Injectable
+- Dio, Retrofit
+- AutoRoute
+- Freezed, JSON Serialization
+- DartZ
+- Shared Preferences
+- Build Flavor
+- .
+- .
+- and many more
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Download it from Play Store by clicking this [link](https://play.google.com/store/apps/details?id=com.dpfht.movie_bloc/).
