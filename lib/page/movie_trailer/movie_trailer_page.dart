@@ -10,6 +10,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../common/function/common_functions.dart';
 import '../../common/widget/common_widget.dart';
 import '../../framework/locator/inject_container.dart';
+import '../../generated/l10n.dart';
 import 'bloc/movie_trailer_event.dart';
 
 @RoutePage()
@@ -27,8 +28,10 @@ class MovieTrailerPage extends StatelessWidget {
         listenWhen: (previous, current) => (previous.errorMessage != current.errorMessage) && current.errorMessage.isNotEmpty,
         listener: (BuildContext context, MovieTrailerState state) {
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                  content: Text(state.errorMessage)
+              snackbarMessage(
+                  title: S.of(context).error,
+                  message: state.errorMessage,
+                  okLabel: S.of(context).ok
               )
           );
         },

@@ -24,6 +24,7 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
     final result = await getMovieGenreUseCase();
     result.fold((appError) {
       emit(state.copyWith(errorMessage: appError.message));
+      emit(state.copyWith(errorMessage: ''));
     }, (genreDomain) {
       if (genreDomain.genres.isNotEmpty) {
         final genres = genreDomain.genres;

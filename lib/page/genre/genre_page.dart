@@ -23,11 +23,13 @@ class GenrePage extends StatelessWidget {
         body: BlocProvider<GenreBloc>(
           create: (BuildContext context) => locator<GenreBloc>()..add(const GenrePageInitiated()),
           child: BlocConsumer<GenreBloc, GenreState>(
-            listenWhen: (previous, current) => previous.errorMessage != current.errorMessage && current.errorMessage.isNotEmpty,
+            listenWhen: (previous, current) => current.errorMessage.isNotEmpty,
             listener: (BuildContext context, GenreState state) {
               ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                      content: Text(state.errorMessage)
+                  snackbarMessage(
+                    title: S.of(context).error,
+                    message: state.errorMessage,
+                    okLabel: S.of(context).ok
                   )
               );
             },

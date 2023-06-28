@@ -32,6 +32,7 @@ class MovieReviewsBloc extends Bloc<MovieReviewsEvent, MovieReviewsState> {
     final result = await getMovieReviewUseCase(movieId, page);
     result.fold((appError) {
       emit(state.copyWith(errorMessage: appError.message));
+      emit(state.copyWith(errorMessage: ''));
     }, (reviewDomain) {
       final reviews = reviewDomain.results;
 
@@ -41,9 +42,11 @@ class MovieReviewsBloc extends Bloc<MovieReviewsEvent, MovieReviewsState> {
         newReviews.addAll(existingReviews);
         newReviews.addAll(reviews);
 
-        emit(state.copyWith(movieId: movieId));
-        emit(state.copyWith(page: page));
-        emit(state.copyWith(reviews: newReviews));
+        emit(state.copyWith(
+          movieId: movieId,
+          page: page,
+          reviews: newReviews
+        ));
       } else {
         emit(state.copyWith(isLastPage: true));
       }

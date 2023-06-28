@@ -8,5 +8,7 @@
   "show_trailer" : "Show Trailer",
   "review" : "Review",
   "no_review_available" : "Currently no review available",
-  "loading" : "loading..."
+  "loading" : "loading...",
+  "error": "Error",
+  "ok": "OK"
 }

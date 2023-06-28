@@ -8,5 +8,7 @@
   "show_trailer" : "Lihat Cuplikan",
   "review" : "Ulasan",
   "no_review_available" : "Belum ada ulasan",
-  "loading" : "memuat..."
+  "loading" : "memuat...",
+  "error": "Kesalahan",
+  "ok": "Oke"
 }

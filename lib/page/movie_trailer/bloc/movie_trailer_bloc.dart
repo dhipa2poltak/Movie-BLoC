@@ -27,10 +27,12 @@ class MovieTrailerBloc extends Bloc<MovieTrailerEvent, MovieTrailerState> {
     }, (trailerDomain) {
       final youtubeEntity = _getYoutubeTrailer(trailerDomain.results);
       if (youtubeEntity != null) {
-        emit(state.copyWith(id: youtubeEntity.id));
-        emit(state.copyWith(name: youtubeEntity.name));
-        emit(state.copyWith(key: youtubeEntity.key));
-        emit(state.copyWith(movieId: movieId));
+        emit(state.copyWith(
+          id: youtubeEntity.id,
+          name: youtubeEntity.name,
+          key: youtubeEntity.key,
+          movieId: movieId
+        ));
       }
     });
 

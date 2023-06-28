@@ -23,19 +23,18 @@ class MovieReviewsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appRepository = locator<AppRepository>();
-    appRepository.getMovieDetail(movieId);
-
     return Scaffold(
       appBar: buildAppBar(),
       body: BlocProvider<MovieReviewsBloc>(
         create: (BuildContext context) => locator<MovieReviewsBloc>()..add(MovieReviewsPageInitiated(movieId)),
         child: BlocConsumer<MovieReviewsBloc, MovieReviewsState>(
-          listenWhen: (previous, current) => (previous.errorMessage != current.errorMessage) && current.errorMessage.isNotEmpty,
+          listenWhen: (previous, current) => current.errorMessage.isNotEmpty,
           listener: (BuildContext context, MovieReviewsState state) {
             ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                    content: Text(state.errorMessage)
+                snackbarMessage(
+                    title: S.of(context).error,
+                    message: state.errorMessage,
+                    okLabel: S.of(context).ok
                 )
             );
           },

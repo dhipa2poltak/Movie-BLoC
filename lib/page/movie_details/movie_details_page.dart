@@ -24,11 +24,13 @@ class MovieDetailsPage extends StatelessWidget {
       body: BlocProvider<MovieDetailsBloc>(
         create: (BuildContext context) => locator<MovieDetailsBloc>()..add(MovieDetailsPageInitiated(movieId)),
         child: BlocConsumer<MovieDetailsBloc, MovieDetailsState>(
-          listenWhen: (previous, current) => previous.errorMessage != current.errorMessage && current.errorMessage.isNotEmpty,
+          listenWhen: (previous, current) => current.errorMessage.isNotEmpty,
           listener: (BuildContext context, MovieDetailsState state) {
             ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                    content: Text(state.errorMessage)
+                snackbarMessage(
+                    title: S.of(context).error,
+                    message: state.errorMessage,
+                    okLabel: S.of(context).ok
                 )
             );
           },

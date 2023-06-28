@@ -23,11 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "dark_mode": MessageLookupByLibrary.simpleMessage("Moda Gelap"),
+        "error": MessageLookupByLibrary.simpleMessage("Kesalahan"),
         "light_mode": MessageLookupByLibrary.simpleMessage("Moda Terang"),
         "loading": MessageLookupByLibrary.simpleMessage("memuat..."),
         "movie_genres": MessageLookupByLibrary.simpleMessage("Jenis Tontonan"),
         "no_review_available":
             MessageLookupByLibrary.simpleMessage("Belum ada ulasan"),
+        "ok": MessageLookupByLibrary.simpleMessage("Oke"),
         "review": MessageLookupByLibrary.simpleMessage("Ulasan"),
         "show_review": MessageLookupByLibrary.simpleMessage("Lihat Ulasan"),
         "show_trailer": MessageLookupByLibrary.simpleMessage("Lihat Cuplikan"),

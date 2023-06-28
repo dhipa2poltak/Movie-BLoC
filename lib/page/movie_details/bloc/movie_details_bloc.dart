@@ -25,10 +25,13 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     final result = await getMovieDetailsUseCase(movieId);
     result.fold((appError) {
       emit(state.copyWith(errorMessage: appError.message));
+      emit(state.copyWith(errorMessage: ''));
     }, (movieDetailsDomain) {
-      emit(state.copyWith(movieId: movieId));
-      emit(state.copyWith(title: movieDetailsDomain.title));
-      emit(state.copyWith(description: movieDetailsDomain.overview));
+      emit(state.copyWith(
+        movieId: movieId,
+        title: movieDetailsDomain.title,
+        description: movieDetailsDomain.overview
+      ));
 
       if (movieDetailsDomain.imageUrl.isNotEmpty) {
         emit(state.copyWith(imageUrl: movieDetailsDomain.imageUrl));

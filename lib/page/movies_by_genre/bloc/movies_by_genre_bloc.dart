@@ -32,6 +32,7 @@ class MoviesByGenreBloc extends Bloc<MoviesByGenreEvent, MoviesByGenreState> {
     final result = await getMovieByGenreUseCase('$genreId', page);
     result.fold((appError) {
       emit(state.copyWith(errorMessage: appError.message));
+      emit(state.copyWith(errorMessage: ''));
     }, (movieByGenreDomain) {
         final movies = movieByGenreDomain.results;
 
@@ -41,9 +42,11 @@ class MoviesByGenreBloc extends Bloc<MoviesByGenreEvent, MoviesByGenreState> {
           newMovies.addAll(existingMovies);
           newMovies.addAll(movies);
 
-          emit(state.copyWith(genreId: genreId));
-          emit(state.copyWith(page: page));
-          emit(state.copyWith(movies: newMovies));
+          emit(state.copyWith(
+            genreId: genreId,
+            page: page,
+            movies: newMovies
+          ));
         } else {
           emit(state.copyWith(isLastPage: true));
         }

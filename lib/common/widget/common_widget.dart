@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app_config.dart';
 import '../../generated/l10n.dart';
+import '../app_constants.dart';
 import '../theme/bloc/theme_bloc.dart';
 import '../theme/bloc/theme_event.dart';
 import '../theme/bloc/theme_state.dart';
@@ -51,4 +52,21 @@ Widget buildLoadingIndicator(bool isLoading) {
   } else {
     return emptyWidget();
   }
+}
+
+SnackBar snackbarMessage({required String title, required String message, required String okLabel}) {
+  return SnackBar(
+    duration: const Duration(minutes: AppConstants.DEFAULT_SNACKBAR_DURATION_IN_MINUTE),
+    content: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+        Text(message)
+      ],
+    ),
+    action: SnackBarAction(
+      label: okLabel,
+      onPressed: () {},
+    ),
+  );
 }

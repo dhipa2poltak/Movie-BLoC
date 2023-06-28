@@ -139,6 +139,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
