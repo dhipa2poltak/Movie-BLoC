@@ -1,14 +1,11 @@
 
-import '../models/response/discover_movie_by_genre_response.dart';
-import '../models/response/genre_response.dart';
-import '../models/response/movie_details_response.dart';
-import '../models/response/review_response.dart';
-import '../models/response/trailer_response.dart';
+import 'package:dartz/dartz.dart';
+import 'package:domain/domain.dart';
 
 abstract class AppDataSource {
-  Future<GenreResponse> getMovieGenre();
-  Future<DiscoverMovieByGenreResponse> getMoviesByGenre(String genreId, int page);
-  Future<MovieDetailsResponse> getMovieDetail(int movieId);
-  Future<ReviewResponse> getMovieReviews(int movieId, int page, String language);
-  Future<TrailerResponse> getMovieTrailers(int movieId, String language);
+  Future<Either<AppError, GenreDomain>> getMovieGenre();
+  Future<Either<AppError, DiscoverMovieByGenreDomain>> getMoviesByGenre(String genreId, int page);
+  Future<Either<AppError, MovieDetailsDomain>> getMovieDetail(int movieId);
+  Future<Either<AppError, ReviewDomain>> getMovieReviews(int movieId, int page, String language);
+  Future<Either<AppError, TrailerDomain>> getMovieTrailers(int movieId, String language);
 }

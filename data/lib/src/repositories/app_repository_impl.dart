@@ -1,4 +1,5 @@
 
+
 import 'package:dartz/dartz.dart';
 import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
@@ -12,57 +13,27 @@ class AppRepositoryImpl extends AppRepository {
   AppDataSource appDataSource;
 
   @override
-  Future<Either<AppError, GenreDomain>> getMovieGenre() async {
-    try {
-      final genreDomain = await appDataSource.getMovieGenre().then((value) => value.toDomain());
-
-      return Right(genreDomain);
-    } catch (e) {
-      return Left(AppError(message: e.toString()));
-    }
+  Future<Either<AppError, GenreDomain>> getMovieGenre() {
+    return appDataSource.getMovieGenre();
   }
 
   @override
-  Future<Either<AppError, DiscoverMovieByGenreDomain>> getMoviesByGenre(String genreId, int page) async {
-    try {
-      final movieDomain = await appDataSource.getMoviesByGenre(genreId, page).then((value) => value.toDomain());
-
-      return Right(movieDomain);
-    } catch (e) {
-      return Left(AppError(message: e.toString()));
-    }
+  Future<Either<AppError, DiscoverMovieByGenreDomain>> getMoviesByGenre(String genreId, int page) {
+    return appDataSource.getMoviesByGenre(genreId, page);
   }
 
   @override
-  Future<Either<AppError, MovieDetailsDomain>> getMovieDetail(int movieId) async {
-    try {
-      final detailsDomain = await appDataSource.getMovieDetail(movieId).then((value) => value.toDomain());
-
-      return Right(detailsDomain);
-    } catch (e) {
-      return Left(AppError(message: e.toString()));
-    }
+  Future<Either<AppError, MovieDetailsDomain>> getMovieDetail(int movieId) {
+    return appDataSource.getMovieDetail(movieId);
   }
 
   @override
-  Future<Either<AppError, ReviewDomain>> getMovieReviews(int movieId, int page, String language) async {
-    try {
-      final reviewDomain = await appDataSource.getMovieReviews(movieId, page, language).then((value) => value.toDomain());
-
-      return Right(reviewDomain);
-    } catch (e) {
-      return Left(AppError(message: e.toString()));
-    }
+  Future<Either<AppError, ReviewDomain>> getMovieReviews(int movieId, int page, String language) {
+    return appDataSource.getMovieReviews(movieId, page, language);
   }
 
   @override
-  Future<Either<AppError, TrailerDomain>> getMovieTrailers(int movieId, String language) async {
-    try {
-      final trailerDomain = await appDataSource.getMovieTrailers(movieId, language).then((value) => value.toDomain());
-
-      return Right(trailerDomain);
-    } catch (e) {
-      return Left(AppError(message: e.toString()));
-    }
+  Future<Either<AppError, TrailerDomain>> getMovieTrailers(int movieId, String language) {
+    return appDataSource.getMovieTrailers(movieId, language);
   }
 }
