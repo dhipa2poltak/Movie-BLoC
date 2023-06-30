@@ -22,27 +22,30 @@ class MovieTrailerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<MovieTrailerBloc>(
-      create: (BuildContext context) => locator<MovieTrailerBloc>()..add(MovieTrailerPageInitiated(movieId)),
-      child: BlocConsumer<MovieTrailerBloc, MovieTrailerState>(
-        listenWhen: (previous, current) => (previous.errorMessage != current.errorMessage) && current.errorMessage.isNotEmpty,
-        listener: (BuildContext context, MovieTrailerState state) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              snackbarMessage(
-                  title: S.of(context).error,
-                  message: state.errorMessage,
-                  okLabel: S.of(context).ok
-              )
-          );
-        },
-        builder: (BuildContext context, MovieTrailerState state) {
-          return Stack(
-            children: <Widget>[
-              _buildMainView(context, state),
-              buildLoadingIndicator(state.isLoading)
-            ],
-          );
-        },
+    return Scaffold(
+      appBar: null,
+      body: BlocProvider<MovieTrailerBloc>(
+        create: (BuildContext context) => locator<MovieTrailerBloc>()..add(MovieTrailerPageInitiated(movieId)),
+        child: BlocConsumer<MovieTrailerBloc, MovieTrailerState>(
+          listenWhen: (previous, current) => (previous.errorMessage != current.errorMessage) && current.errorMessage.isNotEmpty,
+          listener: (BuildContext context, MovieTrailerState state) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                snackbarMessage(
+                    title: S.of(context).error,
+                    message: state.errorMessage,
+                    okLabel: S.of(context).ok
+                )
+            );
+          },
+          builder: (BuildContext context, MovieTrailerState state) {
+            return Stack(
+              children: <Widget>[
+                _buildMainView(context, state),
+                buildLoadingIndicator(state.isLoading)
+              ],
+            );
+          },
+        ),
       ),
     );
   }
