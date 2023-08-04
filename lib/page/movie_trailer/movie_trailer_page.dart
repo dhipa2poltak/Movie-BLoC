@@ -23,7 +23,7 @@ class MovieTrailerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
+      appBar: buildAppBar(),
       body: BlocProvider<MovieTrailerBloc>(
         create: (BuildContext context) => locator<MovieTrailerBloc>()..add(MovieTrailerPageInitiated(movieId)),
         child: BlocConsumer<MovieTrailerBloc, MovieTrailerState>(
